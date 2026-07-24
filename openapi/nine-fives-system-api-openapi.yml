@@ -1,0 +1,83 @@
+openapi: 3.1.0
+info:
+  title: Nine Fives Programmable REST Attenuator System API
+  version: '1.0'
+  description: JSON REST API served on port 80 by the Nine Fives POE-ATTEN-6G programmable RF attenuator for programmatic control and monitoring. Faithfully transcribed from the published device reference manual; the device also exposes SCPI over raw TCP (port 5025) and HiSLIP (port 4880). No authentication is required — the API is served directly by the device over the local network (Ethernet or USB-C).
+  contact:
+    name: Nine Fives
+    url: https://ninefives.com
+  x-generated: '2026-07-20'
+  x-method: generated
+  x-source: https://docs.ninefives.com/attenuator/rest-api/overview/
+servers:
+- url: http://{deviceIp}
+  description: Device-hosted API on port 80 (default Ethernet fallback IP 192.168.0.95, USB-C 192.168.42.95)
+  variables:
+    deviceIp:
+      default: 192.168.0.95
+      description: The IP address of the attenuator device on the local network
+tags:
+- name: System
+  description: Device status and reboot
+paths:
+  /api/system/status:
+    get:
+      operationId: getSystemStatus
+      tags:
+      - System
+      summary: Get complete system status
+      description: Returns complete system status information including device name, model, serial, connection status, and temperature.
+      responses:
+        '200':
+          description: System status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemStatus'
+  /api/system/reboot:
+    post:
+      operationId: rebootSystem
+      tags:
+      - System
+      summary: Reboot the device
+      description: Reboots the device. The device will be unreachable for approximately 30 seconds.
+      responses:
+        '200':
+          description: Reboot acknowledged
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusMessage'
+components:
+  schemas:
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+    SystemStatus:
+      type: object
+      properties:
+        device:
+          type: string
+          description: Device name
+        hostname:
+          type: string
+          description: System hostname
+        model:
+          type: string
+          description: Device model identifier
+        serial:
+          type: string
+          description: Serial number
+        status:
+          type: string
+          description: 'Connection status: Connected via eth, Connected via usb, or Disconnected'
+        temperature:
+          type: number
+          description: Device temperature in °C
+        connectedIface:
+          type: string
+          description: Network interface the client is connected through (eth0 or usb0)
