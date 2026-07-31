@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Nine Fives Programmable Attenuator
+  version: 1.0.0
+extends: openapi/nine-fives-attenuator-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-20'
+      x-apievangelist-source: https://docs.ninefives.com/attenuator/rest-api/overview/
+      x-interfaces: [rest, scpi-tcp-5025, scpi-hislip-4880, web-ui]
+  - target: $.paths['/api/attenuator']['post']
+    update:
+      x-apievangelist-note: >-
+        Setpoint validated to 0..95.25 dB in 0.25 dB steps; off-step or out-of-range
+        values return HTTP 500 with a plain-text message.
+  - target: $.paths['/api/system/reboot']['post']
+    update:
+      x-apievangelist-consequence: disruptive
+      x-apievangelist-note: Device unreachable ~30s after reboot.

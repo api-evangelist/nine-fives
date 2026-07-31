@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://ninefives.com/.well-known/
+host: https://ninefives.com
+note: >-
+  The ninefives.com storefront is a Shopify store; its /.well-known documents are
+  Shopify-platform surfaces (UCP agent-commerce profile + customer-account OIDC),
+  not the device REST API (which is served locally on each device at port 80 and
+  publishes no /.well-known). Captured here because they are genuinely served on
+  the provider's registered domain.
+documents:
+  - path: /.well-known/ucp
+    status: 200
+    file: nine-fives-ucp.json
+    description: Universal Commerce Protocol merchant profile (agent-driven commerce)
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: nine-fives-openid-configuration.json
+    description: Shopify customer-account OpenID Connect discovery document
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: nine-fives-oauth-authorization-server.json
+    description: RFC 8414 OAuth authorization server metadata (Shopify customer account)
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404

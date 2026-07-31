@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.ninefives.com/attenuator/rest-api/overview/
+scope: Nine Fives device REST API (attenuator + SPDT switch)
+conventions:
+  base_url:
+    pattern: http://<device-ip>
+    port: 80
+    note: Served locally by the instrument; default Ethernet fallback 192.168.0.95, USB-C 192.168.42.95
+  content_type:
+    request: application/json
+    response: application/json
+    note: All endpoints accept and return JSON unless otherwise noted; firmware upload uses multipart/form-data
+  authentication:
+    style: none
+    ref: authentication/nine-fives-authentication.yml
+  idempotency:
+    supported: false
+    note: No idempotency-key mechanism is documented. GET reads are naturally idempotent; state-setting POSTs (attenuation, switch state) are last-write-wins and safely repeatable, but there is no client-supplied idempotency key.
+  pagination:
+    supported: false
+    note: All endpoints return single scalar/object resources; no collections requiring pagination.
+  versioning:
+    api: unversioned path (/api/...)
+    firmware: dual-slot A/B with semantic firmware versions (e.g. 1.2.0-abc1234)
+    ref: lifecycle/nine-fives-lifecycle.yml
+  error_envelope:
+    structured: false
+    note: Errors returned as plain-text descriptive messages; HTTP status conveys class
+    ref: errors/nine-fives-problem-types.yml
+  async_operations:
+    note: Firmware installs return 202 and run asynchronously; poll GET /api/firmware/status for progress/phase
+  rate_limiting:
+    note: None documented for the device API (single-tenant local instrument)
+  alternate_interfaces:
+    - name: SCPI raw TCP
+      port: 5025
+      format: text, newline-terminated
+    - name: SCPI over HiSLIP
+      port: 4880
+      standard: IVI-6.1 (High-Speed LAN Instrument Protocol)
+    - name: Web UI
+      port: 80
+      note: Graphical control served alongside the REST API

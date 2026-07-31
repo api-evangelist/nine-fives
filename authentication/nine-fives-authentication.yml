@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.ninefives.com/attenuator/rest-api/overview/
+summary:
+  types: [none]
+  note: >-
+    The Nine Fives device REST API (attenuator and SPDT switch) is served directly
+    by the instrument on the local network (Ethernet / USB-C) on port 80 and
+    documents NO authentication — access control is the local network boundary,
+    consistent with lab-bench RF test instruments. SCPI over TCP (5025) and HiSLIP
+    (4880) are likewise unauthenticated. Deployments should isolate devices on a
+    trusted test LAN.
+schemes: []
+storefront_auth:
+  note: >-
+    Separately, the ninefives.com Shopify storefront exposes customer-account
+    OpenID Connect (issuer https://shopify.com/authentication/77424886003) for
+    shopper login — this governs the store, not the device API.
+  type: openIdConnect
+  issuer: https://shopify.com/authentication/77424886003
+  scopes_supported: [openid, email, customer-account-api:full, customer-account-mcp-api:full]

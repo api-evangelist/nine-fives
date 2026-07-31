@@ -1,0 +1,258 @@
+openapi: 3.1.0
+info:
+  title: Nine Fives Programmable SPDT Switch REST API
+  version: '1.0'
+  description: >-
+    JSON REST API served on port 80 by the Nine Fives POE-SWITCH-6G programmable
+    RF SPDT switch for programmatic control and monitoring. Faithfully transcribed
+    from the published device reference manual; the device also exposes SCPI over
+    raw TCP (port 5025) and HiSLIP (port 4880). No authentication is required — the
+    API is served directly by the device over the local network (Ethernet or USB-C).
+  contact:
+    name: Nine Fives
+    url: https://ninefives.com
+  x-generated: '2026-07-20'
+  x-method: generated
+  x-source: https://docs.ninefives.com/switch/rest-api/overview/
+servers:
+  - url: http://{deviceIp}
+    description: Device-hosted API on port 80 (default Ethernet fallback IP 192.168.0.95, USB-C 192.168.42.95)
+    variables:
+      deviceIp:
+        default: 192.168.0.95
+        description: The IP address of the switch device on the local network
+tags:
+  - name: System
+    description: Device status and reboot
+  - name: Network
+    description: Ethernet and USB-C interface configuration
+  - name: Firmware
+    description: Firmware status and dual-slot (A/B) updates
+  - name: Switch
+    description: SPDT switch state control
+paths:
+  /api/system/status:
+    get:
+      operationId: getSystemStatus
+      tags: [System]
+      summary: Get complete system status
+      description: Returns complete system status information including device name, model, serial, connection status, and temperature.
+      responses:
+        '200':
+          description: System status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemStatus'
+  /api/system/reboot:
+    post:
+      operationId: rebootSystem
+      tags: [System]
+      summary: Reboot the device
+      description: Reboots the device. The device will be unreachable for approximately 30 seconds.
+      responses:
+        '200':
+          description: Reboot acknowledged
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusMessage'
+  /api/network/config:
+    get:
+      operationId: getNetworkConfig
+      tags: [Network]
+      summary: Get network configuration
+      description: Returns network configuration for both the Ethernet and USB-C interfaces.
+      responses:
+        '200':
+          description: Network configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkConfig'
+    post:
+      operationId: setNetworkConfig
+      tags: [Network]
+      summary: Update network configuration
+      description: Updates network configuration and applies it immediately. Only include fields to change.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkConfig'
+      responses:
+        '200':
+          description: Configuration applied
+        '400':
+          description: Bad Request — invalid input or parameters
+  /api/network/reset:
+    post:
+      operationId: resetNetworkConfig
+      tags: [Network]
+      summary: Reset network configuration to factory defaults
+      responses:
+        '200':
+          description: Network reset
+  /api/firmware/status:
+    get:
+      operationId: getFirmwareStatus
+      tags: [Firmware]
+      summary: Get firmware status
+      description: Returns current firmware version, dual-slot (A/B) information, and update progress.
+      responses:
+        '200':
+          description: Firmware status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FirmwareStatus'
+  /api/firmware/update:
+    post:
+      operationId: updateFirmware
+      tags: [Firmware]
+      summary: Upload and install a firmware bundle
+      description: Upload a .raucb firmware bundle (max 256 MiB) via multipart/form-data. mode query is empty (single slot) or "full" (both slots). Installation runs asynchronously.
+      parameters:
+        - name: mode
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: ['', full]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                firmware:
+                  type: string
+                  format: binary
+      responses:
+        '202':
+          description: Accepted — installation started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusMessage'
+  /api/firmware/update/url:
+    post:
+      operationId: updateFirmwareFromUrl
+      tags: [Firmware]
+      summary: Install firmware from a URL
+      responses:
+        '202':
+          description: Accepted
+  /api/firmware/update/resume:
+    post:
+      operationId: resumeFirmwareUpdate
+      tags: [Firmware]
+      summary: Resume a firmware update
+      responses:
+        '200':
+          description: Update resumed
+  /api/firmware/update/cancel:
+    post:
+      operationId: cancelFirmwareUpdate
+      tags: [Firmware]
+      summary: Cancel a firmware update
+      responses:
+        '200':
+          description: Update cancelled
+  /api/switch:
+    get:
+      operationId: getSwitchState
+      tags: [Switch]
+      summary: Get current switch state
+      description: Returns the current switch state (0 = RF0, 1 = RF1).
+      responses:
+        '200':
+          description: Current switch state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwitchState'
+    post:
+      operationId: setSwitchState
+      tags: [Switch]
+      summary: Set switch state
+      description: Sets the switch state. Valid values are 0 (RF0) or 1 (RF1).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SwitchState'
+      responses:
+        '200':
+          description: State applied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwitchState'
+        '400':
+          description: Invalid state value (must be 0 or 1)
+        '500':
+          description: Failed to set switch state
+components:
+  schemas:
+    SystemStatus:
+      type: object
+      properties:
+        device: { type: string }
+        hostname: { type: string }
+        model: { type: string }
+        serial: { type: string }
+        status: { type: string }
+        temperature: { type: number }
+        connectedIface: { type: string }
+    StatusMessage:
+      type: object
+      properties:
+        status: { type: string }
+        message: { type: string }
+    NetworkConfig:
+      type: object
+      properties:
+        ethernet:
+          type: object
+          properties:
+            mode: { type: string, enum: [dhcp_client_fallback, static, dhcp_client] }
+            ip_address: { type: string }
+            netmask: { type: string }
+            gateway: { type: string }
+            dhcp_fallback_timeout: { type: integer }
+            live_ip: { type: string, readOnly: true }
+            mac: { type: string, readOnly: true }
+        usb_gadget:
+          type: object
+          properties:
+            mode: { type: string, enum: [dhcp_host, static, disabled] }
+            ip_address: { type: string }
+            netmask: { type: string }
+            enabled: { type: boolean }
+            live_ip: { type: string, readOnly: true }
+            mac: { type: string, readOnly: true }
+    FirmwareStatus:
+      type: object
+      properties:
+        version: { type: string }
+        activeSlot: { type: string, enum: [A, B] }
+        inactiveSlot: { type: string, enum: [A, B] }
+        inactiveVersion: { type: string }
+        updateInProgress: { type: boolean }
+        updateProgress: { type: number }
+        updateMessage: { type: string }
+        updateMode: { type: string }
+        updatePhase: { type: string, enum: [installing_first, rebooting, installing_second] }
+        lastError: { type: string }
+    SwitchState:
+      type: object
+      required: [state]
+      properties:
+        state:
+          type: integer
+          enum: [0, 1]
+          description: '0 = RF0, 1 = RF1'

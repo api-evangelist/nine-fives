@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.ninefives.com/attenuator/scpi/overview/
+standards:
+  - id: scpi
+    conforms: true
+    evidence: Device implements a SCPI (Standard Commands for Programmable Instruments) command interface (common *IDN? plus system/network/instrument commands).
+  - id: ivi-hislip
+    conforms: true
+    evidence: SCPI transported over HiSLIP (High-Speed LAN Instrument Protocol) per IVI Foundation specification IVI-6.1 on port 4880.
+  - id: scpi-raw-tcp
+    conforms: true
+    evidence: SCPI over raw TCP socket on port 5025 (VXI-11/Telnet-style newline-terminated text).
+  - id: visa
+    conforms: true
+    evidence: Documented for use with a VISA library (e.g. PyVISA) via the HiSLIP resource string.
+  - id: rest-json
+    conforms: true
+    evidence: JSON REST API on port 80; Content-Type application/json.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Error responses are plain text, not application/problem+json.
+  - id: oauth2
+    conforms: false
+    evidence: Device API is unauthenticated; OAuth/OIDC exists only on the Shopify storefront, not the instrument API.
+  - id: oidc
+    conforms: true
+    scope: storefront-only
+    evidence: ninefives.com Shopify customer-account OpenID Connect discovery document present.

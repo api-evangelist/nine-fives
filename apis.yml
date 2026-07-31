@@ -1,22 +1,202 @@
 aid: nine-fives
 name: Nine Fives
-description: Nine Fives is a company surfaced as a portfolio company of y-combinator and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Nine Fives builds modern, simple-to-use RF (radio frequency) test equipment for
+  next-generation spacecraft, drones, and cellphones. Founded in 2025 by Andrew
+  Kurtz and Noah Levy — RF hardware engineers who spent a decade at SpaceX
+  designing radios and test systems for Falcon 9, Dragon, and Starship — the
+  Y Combinator-backed company sells programmable, network-connected instruments:
+  the POE-ATTEN-6G programmable attenuator and the POE-SWITCH-6G programmable SPDT
+  switch, powered over USB-C or Power over Ethernet. Each instrument is
+  automation-first: it serves a JSON REST API and a SCPI command interface (raw TCP
+  and HiSLIP/IVI-6.1) directly on the device, plus a browser Web UI and touchscreen,
+  with no drivers to install — control it with a plain curl command. The NineVue
+  platform adds version-controlled test-rack configuration and an LLM skill that
+  turns a rack drawing into functional test-automation code.
 url: https://raw.githubusercontent.com/api-evangelist/nine-fives/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://ninefives.com/cdn/shop/files/NineFivesLogo.svg?v=1775235707
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - y-combinator
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: has-device-api
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- RF Test Equipment
+- Test and Measurement
+- Hardware
+- IoT
+- Instrumentation
+- Automation
+- Aerospace
+- Attenuator
+- RF Switch
+- SCPI
+apis:
+- aid: nine-fives:nine-fives-attenuator-api
+  name: Nine Fives Attenuator API
+  description: Attenuation setpoint control
+  humanURL: https://docs.ninefives.com/attenuator/
+  baseURL: http://192.168.0.95
+  tags:
+  - Attenuator
+  properties:
+  - type: OpenAPI
+    url: openapi/nine-fives-attenuator-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ninefives.com/attenuator/
+  - type: APIReference
+    url: https://docs.ninefives.com/attenuator/rest-api/overview/
+  - type: GettingStarted
+    url: https://docs.ninefives.com/attenuator/getting-started/
+  - type: Documentation
+    url: https://docs.ninefives.com/switch/
+  - type: APIReference
+    url: https://docs.ninefives.com/switch/rest-api/overview/
+- aid: nine-fives:nine-fives-firmware-api
+  name: Nine Fives Firmware API
+  description: Firmware status and dual-slot (A/B) updates
+  humanURL: https://docs.ninefives.com/attenuator/
+  baseURL: http://192.168.0.95
+  tags:
+  - Firmware
+  properties:
+  - type: OpenAPI
+    url: openapi/nine-fives-firmware-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ninefives.com/attenuator/
+  - type: APIReference
+    url: https://docs.ninefives.com/attenuator/rest-api/overview/
+  - type: GettingStarted
+    url: https://docs.ninefives.com/attenuator/getting-started/
+  - type: Documentation
+    url: https://docs.ninefives.com/switch/
+  - type: APIReference
+    url: https://docs.ninefives.com/switch/rest-api/overview/
+- aid: nine-fives:nine-fives-network-api
+  name: Nine Fives Network API
+  description: Ethernet and USB-C interface configuration
+  humanURL: https://docs.ninefives.com/attenuator/
+  baseURL: http://192.168.0.95
+  tags:
+  - Network
+  properties:
+  - type: OpenAPI
+    url: openapi/nine-fives-network-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ninefives.com/attenuator/
+  - type: APIReference
+    url: https://docs.ninefives.com/attenuator/rest-api/overview/
+  - type: GettingStarted
+    url: https://docs.ninefives.com/attenuator/getting-started/
+  - type: Documentation
+    url: https://docs.ninefives.com/switch/
+  - type: APIReference
+    url: https://docs.ninefives.com/switch/rest-api/overview/
+- aid: nine-fives:nine-fives-switch-api
+  name: Nine Fives Switch API
+  description: SPDT switch state control
+  humanURL: https://docs.ninefives.com/attenuator/
+  baseURL: http://192.168.0.95
+  tags:
+  - Switch
+  properties:
+  - type: OpenAPI
+    url: openapi/nine-fives-switch-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ninefives.com/attenuator/
+  - type: APIReference
+    url: https://docs.ninefives.com/attenuator/rest-api/overview/
+  - type: GettingStarted
+    url: https://docs.ninefives.com/attenuator/getting-started/
+  - type: Documentation
+    url: https://docs.ninefives.com/switch/
+  - type: APIReference
+    url: https://docs.ninefives.com/switch/rest-api/overview/
+- aid: nine-fives:nine-fives-system-api
+  name: Nine Fives System API
+  description: Device status and reboot
+  humanURL: https://docs.ninefives.com/attenuator/
+  baseURL: http://192.168.0.95
+  tags:
+  - System
+  properties:
+  - type: OpenAPI
+    url: openapi/nine-fives-system-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ninefives.com/attenuator/
+  - type: APIReference
+    url: https://docs.ninefives.com/attenuator/rest-api/overview/
+  - type: GettingStarted
+    url: https://docs.ninefives.com/attenuator/getting-started/
+  - type: Documentation
+    url: https://docs.ninefives.com/switch/
+  - type: APIReference
+    url: https://docs.ninefives.com/switch/rest-api/overview/
+common:
+- type: DomainSecurity
+  url: security/nine-fives-domain-security.yml
+- type: DeveloperPortal
+  url: https://ninefives.com/pages/documentation
+- type: Documentation
+  url: https://docs.ninefives.com/
+- type: APIReference
+  url: https://docs.ninefives.com/attenuator/rest-api/overview/
+- type: GettingStarted
+  url: https://docs.ninefives.com/attenuator/getting-started/
+- type: Blog
+  url: https://blog.ninefives.com/
+- type: Support
+  url: https://ninefives.com/pages/contact
+- type: SignUp
+  url: https://ninefives.com/account/login
+- type: PrivacyPolicy
+  url: https://ninefives.com/policies/privacy-policy
+- type: Website
+  url: https://ninefives.com
+- type: Authentication
+  url: authentication/nine-fives-authentication.yml
+- type: Conventions
+  url: conventions/nine-fives-conventions.yml
+- type: ErrorCatalog
+  url: errors/nine-fives-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/nine-fives-lifecycle.yml
+- type: Conformance
+  url: conformance/nine-fives-conformance.yml
+- type: DataModel
+  url: data-model/nine-fives-data-model.yml
+- type: WellKnown
+  url: well-known/nine-fives-well-known.yml
+- type: LLMsTxt
+  url: llms/nine-fives-llms.txt
+- type: MCPServer
+  url: mcp/nine-fives-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1

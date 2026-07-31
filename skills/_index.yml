@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/nine-fives-attenuator-openapi.yml, openapi/nine-fives-switch-openapi.yml
+skills:
+  - file: nine-fives-set-attenuation.md
+    name: Set RF attenuation on a Nine Fives attenuator
+    api: openapi/nine-fives-attenuator-openapi.yml
+    operations: [getSystemStatus, getAttenuation, setAttenuation, getStartupAttenuation, setStartupAttenuation]
+  - file: nine-fives-switch-rf-path.md
+    name: Switch the RF path on a Nine Fives SPDT switch
+    api: openapi/nine-fives-switch-openapi.yml
+    operations: [getSystemStatus, getSwitchState, setSwitchState]

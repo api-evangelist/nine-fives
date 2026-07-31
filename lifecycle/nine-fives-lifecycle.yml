@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.ninefives.com/attenuator/rest-api/firmware/
+versioning:
+  api:
+    scheme: unversioned-path
+    note: REST paths are /api/... with no version segment
+  firmware:
+    scheme: semantic
+    example: 1.2.0-abc1234
+    slots: dual (A/B) redundant slots; active + inactive with independent versions
+    update:
+      channels: [upload (.raucb bundle), url, resume, cancel]
+      modes: [single-slot, full (both slots)]
+      async: true
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation/sunset policy for the device API.
+sla:
+  url: null
+  note: Hardware warranty (2-year) and 30-day money-back guarantee published on storefront; no API/service SLA.
+status_page: null
+deprecated_operations: []

@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/nine-fives-attenuator-openapi.yml, openapi/nine-fives-switch-openapi.yml
+note: >-
+  Device configuration/telemetry resources exposed by the REST API. These are
+  device-singleton resources (one instrument), not a relational entity graph —
+  relationships are containment (config contains per-interface blocks), not
+  foreign-key references.
+entities:
+  - name: SystemStatus
+    api: openapi/nine-fives-attenuator-openapi.yml
+    fields: [device, hostname, model, serial, status, temperature, connectedIface]
+  - name: NetworkConfig
+    api: openapi/nine-fives-attenuator-openapi.yml
+    fields: [ethernet, usb_gadget]
+    relationships:
+      - has_one: EthernetConfig
+        via: ethernet
+      - has_one: UsbGadgetConfig
+        via: usb_gadget
+  - name: EthernetConfig
+    fields: [mode, ip_address, netmask, gateway, dhcp_fallback_timeout, dhcp_server, live_ip, mac]
+    relationships:
+      - has_one: DhcpServer
+        via: dhcp_server
+  - name: UsbGadgetConfig
+    fields: [mode, ip_address, netmask, enabled, dhcp_server, live_ip, mac]
+    relationships:
+      - has_one: DhcpServer
+        via: dhcp_server
+  - name: FirmwareStatus
+    api: openapi/nine-fives-attenuator-openapi.yml
+    fields: [version, activeSlot, inactiveSlot, inactiveVersion, updateInProgress, updateProgress, updatePhase, lastError]
+  - name: Attenuation
+    api: openapi/nine-fives-attenuator-openapi.yml
+    fields: [setpoint, startup_setpoint]
+    note: setpoint 0..95.25 dB in 0.25 dB steps
+  - name: SwitchState
+    api: openapi/nine-fives-switch-openapi.yml
+    fields: [state]
+    note: 0 = RF0, 1 = RF1

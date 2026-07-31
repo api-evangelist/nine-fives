@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: ninefives.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  2 16:46:32 2026 GMT
+  hsts: true
+  hsts_max_age: 7889238
+- host: docs.ninefives.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 13 01:47:18 2026 GMT
+  hsts: false
+- host: 192.168.0.95
+  https: false
+domains:
+- domain: ninefives.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine

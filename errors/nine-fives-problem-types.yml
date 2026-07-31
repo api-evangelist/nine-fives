@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: derived
+source: https://docs.ninefives.com/attenuator/rest-api/overview/
+format: plain-text
+envelope: >-
+  Error responses are returned as plain text with a descriptive message (NOT
+  RFC 9457 application/problem+json). Success and structured payloads are JSON.
+problems:
+  - status: 200
+    title: Success
+  - status: 202
+    title: Accepted
+    meaning: Asynchronous operation started (e.g. firmware install in progress)
+  - status: 400
+    title: Bad Request
+    meaning: Invalid input or parameters (e.g. malformed JSON body, invalid switch state)
+    source_operations:
+      - openapi/nine-fives-attenuator-openapi.yml#setAttenuation
+      - openapi/nine-fives-switch-openapi.yml#setSwitchState
+      - openapi/nine-fives-attenuator-openapi.yml#setNetworkConfig
+  - status: 405
+    title: Method Not Allowed
+    meaning: Wrong HTTP method for the endpoint
+  - status: 409
+    title: Conflict
+    meaning: Operation already in progress (e.g. concurrent firmware update)
+  - status: 500
+    title: Internal Server Error
+    meaning: Value out of range / invalid step size, or failed to persist a setting
+    source_operations:
+      - openapi/nine-fives-attenuator-openapi.yml#setAttenuation
+      - openapi/nine-fives-attenuator-openapi.yml#setStartupAttenuation
+      - openapi/nine-fives-switch-openapi.yml#setSwitchState
+  - status: 503
+    title: Service Unavailable

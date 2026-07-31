@@ -1,0 +1,22 @@
+{
+  "provider": "nine-fives",
+  "sources": [
+    "nine-fives-attenuator-api-openapi.yml",
+    "nine-fives-firmware-api-openapi.yml",
+    "nine-fives-network-api-openapi.yml",
+    "nine-fives-switch-api-openapi.yml",
+    "nine-fives-system-api-openapi.yml"
+  ],
+  "outputs": [
+    "nine-fives-attenuator-api-openapi.yml",
+    "nine-fives-firmware-api-openapi.yml",
+    "nine-fives-network-api-openapi.yml",
+    "nine-fives-switch-api-openapi.yml",
+    "nine-fives-system-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
