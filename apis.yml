@@ -150,6 +150,8 @@ apis:
   - type: APIReference
     url: https://docs.ninefives.com/switch/rest-api/overview/
 common:
+- type: Overlay
+  url: overlays/nine-fives-attenuator-overlay.yaml
 - type: DomainSecurity
   url: security/nine-fives-domain-security.yml
 - type: DeveloperPortal
