@@ -1,0 +1,481 @@
+{
+  "item": [
+    {
+      "id": "afe3fdee-c770-4c91-9035-a35d7b25fd7b",
+      "name": "Firmware",
+      "description": {
+        "content": "Firmware status and dual-slot (A/B) updates",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "afe2795d-bfd4-4c77-996a-27e36c7a05fb",
+          "name": "Get firmware status",
+          "request": {
+            "name": "Get firmware status",
+            "description": {
+              "content": "Returns current firmware version, dual-slot (A/B) information, and update progress.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "firmware",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57741415-9134-4a0f-ad7f-07c266bb8e0d",
+              "name": "Firmware status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "firmware",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"string\",\n  \"activeSlot\": \"A\",\n  \"inactiveSlot\": \"B\",\n  \"inactiveVersion\": \"string\",\n  \"updateInProgress\": false,\n  \"updateProgress\": 2326.3708941269247,\n  \"updateMessage\": \"string\",\n  \"updateMode\": \"string\",\n  \"updatePhase\": \"installing_first\",\n  \"lastError\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6c007f8-9864-4df1-bca3-37def5853ea2",
+          "name": "Upload and install a firmware bundle",
+          "request": {
+            "name": "Upload and install a firmware bundle",
+            "description": {
+              "content": "Upload a .raucb firmware bundle (max 256 MiB) for installation. Uses multipart/form-data. The mode query parameter is empty (default) for single slot or \"full\" for both slots. Installation runs asynchronously; poll GET /api/firmware/status for progress.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "firmware",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "Empty (default) for single slot, \"full\" for both slots"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "firmware",
+                  "type": "file",
+                  "description": "The .raucb file (max 256 MiB)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "578255a0-1e8f-45af-8011-566fbeb3ba21",
+              "name": "Accepted — installation started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "firmware",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The .raucb file (max 256 MiB)",
+                        "type": "text/plain"
+                      },
+                      "key": "firmware",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cd8e45e-061c-4697-853c-583d2d4961e0",
+          "name": "Install firmware from a URL",
+          "request": {
+            "name": "Install firmware from a URL",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "firmware",
+                "update",
+                "url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6e595de-b178-4e2e-a9cd-83dc9ce01765",
+              "name": "Accepted — installation started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "firmware",
+                    "update",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8511fdca-7f97-48cd-93b4-6c1b71b7c13e",
+          "name": "Resume a firmware update",
+          "request": {
+            "name": "Resume a firmware update",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "firmware",
+                "update",
+                "resume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c46c87bd-2957-414c-9920-a19325ef71f9",
+              "name": "Update resumed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "firmware",
+                    "update",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63eef48c-0375-418f-894b-298bc3f7cea4",
+          "name": "Cancel a firmware update",
+          "request": {
+            "name": "Cancel a firmware update",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "firmware",
+                "update",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d327d1a6-3ee8-43ad-a363-0ce589419cef",
+              "name": "Update cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "firmware",
+                    "update",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The IP address of the attenuator device on the local network",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.0.95",
+      "key": "deviceIp"
+    },
+    {
+      "type": "string",
+      "value": "http://{{deviceIp}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "365ad13e-ba93-4cbe-9b67-8f7e25da0aec",
+    "name": "Nine Fives Programmable REST Attenuator Firmware API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "JSON REST API served on port 80 by the Nine Fives POE-ATTEN-6G programmable RF attenuator for programmatic control and monitoring. Faithfully transcribed from the published device reference manual; the device also exposes SCPI over raw TCP (port 5025) and HiSLIP (port 4880). No authentication is required — the API is served directly by the device over the local network (Ethernet or USB-C).\n\nContact Support:\n Name: Nine Fives",
+      "type": "text/plain"
+    }
+  }
+}

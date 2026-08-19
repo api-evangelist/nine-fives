@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nine Fives Programmable REST Attenuator API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attenuator",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current attenuation setpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{deviceIp}/api/attenuator"
+          },
+          "docs": "Returns the current attenuation setpoint in dB."
+        },
+        {
+          "info": {
+            "name": "Set attenuation setpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{deviceIp}/api/attenuator",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the attenuation setpoint in dB. Valid range 0 to 95.25 dB in steps of 0.25 dB."
+        },
+        {
+          "info": {
+            "name": "Get startup attenuation setpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{deviceIp}/api/attenuator/startup"
+          },
+          "docs": "Returns the startup attenuation setpoint — the value applied when the device boots."
+        },
+        {
+          "info": {
+            "name": "Set startup attenuation setpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{deviceIp}/api/attenuator/startup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the startup attenuation setpoint. Persisted and applied on every device boot. Valid range 0 to 95.25 dB in steps of 0.25 dB."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

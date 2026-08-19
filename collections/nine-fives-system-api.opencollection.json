@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nine Fives Programmable REST Attenuator System API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get complete system status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{deviceIp}/api/system/status"
+          },
+          "docs": "Returns complete system status information including device name, model, serial, connection status, and temperature."
+        },
+        {
+          "info": {
+            "name": "Reboot the device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{deviceIp}/api/system/reboot"
+          },
+          "docs": "Reboots the device. The device will be unreachable for approximately 30 seconds."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

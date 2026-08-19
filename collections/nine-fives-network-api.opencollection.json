@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nine Fives Programmable REST Attenuator Network API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Network",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get network configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{deviceIp}/api/network/config"
+          },
+          "docs": "Returns network configuration for both the Ethernet and USB-C interfaces, including configured settings and live interface information."
+        },
+        {
+          "info": {
+            "name": "Update network configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{deviceIp}/api/network/config",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates network configuration and applies it immediately. Ethernet, USB-C, or both interfaces may be updated in a single request; only include fields to change. Changing network settings while connected may result in loss of connectivity."
+        },
+        {
+          "info": {
+            "name": "Reset network configuration to factory defaults",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{deviceIp}/api/network/reset"
+          },
+          "docs": "Reset network configuration to factory defaults"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

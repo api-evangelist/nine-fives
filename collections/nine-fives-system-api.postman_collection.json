@@ -1,0 +1,217 @@
+{
+  "item": [
+    {
+      "id": "fbffc7d1-fedf-4f73-a2b6-a3dcf7b393f6",
+      "name": "System",
+      "description": {
+        "content": "Device status and reboot",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "abf031ca-ef80-425f-b021-06e5fbf3d129",
+          "name": "Get complete system status",
+          "request": {
+            "name": "Get complete system status",
+            "description": {
+              "content": "Returns complete system status information including device name, model, serial, connection status, and temperature.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b553ae42-a386-499e-a395-b8c9d1da6ec1",
+              "name": "System status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"device\": \"string\",\n  \"hostname\": \"string\",\n  \"model\": \"string\",\n  \"serial\": \"string\",\n  \"status\": \"string\",\n  \"temperature\": 6505.4899041555545,\n  \"connectedIface\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0890ab11-d594-4795-85bb-2e632888e327",
+          "name": "Reboot the device",
+          "request": {
+            "name": "Reboot the device",
+            "description": {
+              "content": "Reboots the device. The device will be unreachable for approximately 30 seconds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "reboot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "419b297c-f30a-48d0-b8c8-4e7c91dee3c0",
+              "name": "Reboot acknowledged",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "reboot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The IP address of the attenuator device on the local network",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.0.95",
+      "key": "deviceIp"
+    },
+    {
+      "type": "string",
+      "value": "http://{{deviceIp}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "613298a4-5489-42fb-b340-fe29c1eecd6a",
+    "name": "Nine Fives Programmable REST Attenuator System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "JSON REST API served on port 80 by the Nine Fives POE-ATTEN-6G programmable RF attenuator for programmatic control and monitoring. Faithfully transcribed from the published device reference manual; the device also exposes SCPI over raw TCP (port 5025) and HiSLIP (port 4880). No authentication is required — the API is served directly by the device over the local network (Ethernet or USB-C).\n\nContact Support:\n Name: Nine Fives",
+      "type": "text/plain"
+    }
+  }
+}

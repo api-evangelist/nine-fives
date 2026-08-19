@@ -1,0 +1,613 @@
+{
+  "item": [
+    {
+      "id": "aa117915-409b-46db-a828-e7d13f34c116",
+      "name": "Attenuator",
+      "description": {
+        "content": "Attenuation setpoint control",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ea2dccce-a25a-4ab6-aace-8e991d759b24",
+          "name": "Get current attenuation setpoint",
+          "request": {
+            "name": "Get current attenuation setpoint",
+            "description": {
+              "content": "Returns the current attenuation setpoint in dB.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "attenuator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "551f0b84-1c24-4614-b005-b637a2c25f13",
+              "name": "Current setpoint",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "attenuator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"setpoint\": 76.75\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc878508-d0b6-494e-b765-1485f27d4757",
+          "name": "Set attenuation setpoint",
+          "request": {
+            "name": "Set attenuation setpoint",
+            "description": {
+              "content": "Sets the attenuation setpoint in dB. Valid range 0 to 95.25 dB in steps of 0.25 dB.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "attenuator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"setpoint\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1860959-d6de-414e-8873-ff15831457ac",
+              "name": "Setpoint applied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "attenuator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"setpoint\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"setpoint\": 76.75\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b98c7369-cb8e-498d-97ee-e428245415c1",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "attenuator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"setpoint\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cda8d4e3-6339-4ad5-b7cc-552088898497",
+              "name": "Failed to set setpoint (value out of range or invalid step size)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "attenuator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"setpoint\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17dc3968-92f1-45a3-802e-3f9f9e7afdf1",
+          "name": "Get startup attenuation setpoint",
+          "request": {
+            "name": "Get startup attenuation setpoint",
+            "description": {
+              "content": "Returns the startup attenuation setpoint — the value applied when the device boots.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "attenuator",
+                "startup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa961f68-f9ce-4b8e-a126-8e23a2864969",
+              "name": "Startup setpoint",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "attenuator",
+                    "startup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"startup_setpoint\": 3.75\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df199b00-fd3e-4643-9517-b3f5ae567e7a",
+          "name": "Set startup attenuation setpoint",
+          "request": {
+            "name": "Set startup attenuation setpoint",
+            "description": {
+              "content": "Sets the startup attenuation setpoint. Persisted and applied on every device boot. Valid range 0 to 95.25 dB in steps of 0.25 dB.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "attenuator",
+                "startup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startup_setpoint\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9859bf68-1231-4848-8760-1ff070de33eb",
+              "name": "Startup setpoint saved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "attenuator",
+                    "startup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startup_setpoint\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"startup_setpoint\": 3.75\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cc107b5-dc16-4ba1-8e13-d2ab9f4a0bf4",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "attenuator",
+                    "startup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startup_setpoint\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ddbaa1a-48dc-4e2d-9578-54234653071c",
+              "name": "Failed to save startup setpoint",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "attenuator",
+                    "startup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startup_setpoint\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The IP address of the attenuator device on the local network",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.0.95",
+      "key": "deviceIp"
+    },
+    {
+      "type": "string",
+      "value": "http://{{deviceIp}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1ae6b9f0-4f32-4aec-b566-27de906c7ac3",
+    "name": "Nine Fives Programmable REST Attenuator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "JSON REST API served on port 80 by the Nine Fives POE-ATTEN-6G programmable RF attenuator for programmatic control and monitoring. Faithfully transcribed from the published device reference manual; the device also exposes SCPI over raw TCP (port 5025) and HiSLIP (port 4880). No authentication is required — the API is served directly by the device over the local network (Ethernet or USB-C).\n\nContact Support:\n Name: Nine Fives",
+      "type": "text/plain"
+    }
+  }
+}

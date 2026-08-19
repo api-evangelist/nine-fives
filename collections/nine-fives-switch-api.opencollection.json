@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nine Fives Programmable REST Attenuator Switch API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Switch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current switch state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{deviceIp}/api/switch"
+          },
+          "docs": "Returns the current switch state (0 = RF0, 1 = RF1)."
+        },
+        {
+          "info": {
+            "name": "Set switch state",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{deviceIp}/api/switch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the switch state. Valid values are 0 (RF0) or 1 (RF1)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

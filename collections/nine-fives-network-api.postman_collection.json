@@ -1,0 +1,347 @@
+{
+  "item": [
+    {
+      "id": "1fcbef7c-ae98-41ac-8ae6-d07e5756fa18",
+      "name": "Network",
+      "description": {
+        "content": "Ethernet and USB-C interface configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a4c466ed-9332-4c7f-9a18-79ac81ff0e7c",
+          "name": "Get network configuration",
+          "request": {
+            "name": "Get network configuration",
+            "description": {
+              "content": "Returns network configuration for both the Ethernet and USB-C interfaces, including configured settings and live interface information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "network",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb9542ba-0237-4427-827b-df630adeb6a2",
+              "name": "Network configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "network",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ethernet\": {\n    \"mode\": \"dhcp_client_fallback\",\n    \"ip_address\": \"string\",\n    \"netmask\": \"string\",\n    \"gateway\": \"string\",\n    \"dhcp_fallback_timeout\": 2227,\n    \"dhcp_server\": {\n      \"range_start\": \"string\",\n      \"range_end\": \"string\",\n      \"lease_time\": \"string\"\n    },\n    \"live_ip\": \"string\",\n    \"mac\": \"string\"\n  },\n  \"usb_gadget\": {\n    \"mode\": \"static\",\n    \"ip_address\": \"string\",\n    \"netmask\": \"string\",\n    \"enabled\": true,\n    \"dhcp_server\": {\n      \"range_start\": \"string\",\n      \"range_end\": \"string\",\n      \"lease_time\": \"string\"\n    },\n    \"live_ip\": \"string\",\n    \"mac\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "247de26a-e2cd-48b6-86ca-ed8d73506a6b",
+          "name": "Update network configuration",
+          "request": {
+            "name": "Update network configuration",
+            "description": {
+              "content": "Updates network configuration and applies it immediately. Ethernet, USB-C, or both interfaces may be updated in a single request; only include fields to change. Changing network settings while connected may result in loss of connectivity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "network",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ethernet\": {\n    \"mode\": \"<string>\",\n    \"ip_address\": \"<string>\",\n    \"netmask\": \"<string>\",\n    \"gateway\": \"<string>\",\n    \"dhcp_fallback_timeout\": \"<integer>\",\n    \"dhcp_server\": {\n      \"range_start\": \"<string>\",\n      \"range_end\": \"<string>\",\n      \"lease_time\": \"<string>\"\n    }\n  },\n  \"usb_gadget\": {\n    \"mode\": \"<string>\",\n    \"ip_address\": \"<string>\",\n    \"netmask\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"dhcp_server\": {\n      \"range_start\": \"<string>\",\n      \"range_end\": \"<string>\",\n      \"lease_time\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c3c9f9c-c6ec-4f2b-8e3a-13d37e9aa210",
+              "name": "Configuration applied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "network",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ethernet\": {\n    \"mode\": \"dhcp_client\",\n    \"ip_address\": \"string\",\n    \"netmask\": \"string\",\n    \"gateway\": \"string\",\n    \"dhcp_fallback_timeout\": 925,\n    \"dhcp_server\": {\n      \"range_start\": \"string\",\n      \"range_end\": \"string\",\n      \"lease_time\": \"string\"\n    }\n  },\n  \"usb_gadget\": {\n    \"mode\": \"dhcp_host\",\n    \"ip_address\": \"string\",\n    \"netmask\": \"string\",\n    \"enabled\": true,\n    \"dhcp_server\": {\n      \"range_start\": \"string\",\n      \"range_end\": \"string\",\n      \"lease_time\": \"string\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "405441db-1f13-4deb-a0a1-a22a0bf0fa6d",
+              "name": "Bad Request — invalid input or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "network",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ethernet\": {\n    \"mode\": \"dhcp_client\",\n    \"ip_address\": \"string\",\n    \"netmask\": \"string\",\n    \"gateway\": \"string\",\n    \"dhcp_fallback_timeout\": 925,\n    \"dhcp_server\": {\n      \"range_start\": \"string\",\n      \"range_end\": \"string\",\n      \"lease_time\": \"string\"\n    }\n  },\n  \"usb_gadget\": {\n    \"mode\": \"dhcp_host\",\n    \"ip_address\": \"string\",\n    \"netmask\": \"string\",\n    \"enabled\": true,\n    \"dhcp_server\": {\n      \"range_start\": \"string\",\n      \"range_end\": \"string\",\n      \"lease_time\": \"string\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42c71538-9ff3-4f00-bcb5-89bcff21836c",
+          "name": "Reset network configuration to factory defaults",
+          "request": {
+            "name": "Reset network configuration to factory defaults",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "network",
+                "reset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The IP address of the attenuator device on the local network",
+                  "type": "any",
+                  "value": "{{deviceIp}}",
+                  "key": "deviceIp"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2072909e-229f-4675-94ad-07d9d3aa91bb",
+              "name": "Network reset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "network",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The IP address of the attenuator device on the local network",
+                      "type": "any",
+                      "value": "{{deviceIp}}",
+                      "key": "deviceIp"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The IP address of the attenuator device on the local network",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "192.168.0.95",
+      "key": "deviceIp"
+    },
+    {
+      "type": "string",
+      "value": "http://{{deviceIp}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bf881493-c796-46d4-b375-0694201af357",
+    "name": "Nine Fives Programmable REST Attenuator Network API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "JSON REST API served on port 80 by the Nine Fives POE-ATTEN-6G programmable RF attenuator for programmatic control and monitoring. Faithfully transcribed from the published device reference manual; the device also exposes SCPI over raw TCP (port 5025) and HiSLIP (port 4880). No authentication is required — the API is served directly by the device over the local network (Ethernet or USB-C).\n\nContact Support:\n Name: Nine Fives",
+      "type": "text/plain"
+    }
+  }
+}

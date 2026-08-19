@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nine Fives Programmable REST Attenuator Firmware API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Firmware",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get firmware status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{deviceIp}/api/firmware/status"
+          },
+          "docs": "Returns current firmware version, dual-slot (A/B) information, and update progress."
+        },
+        {
+          "info": {
+            "name": "Upload and install a firmware bundle",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{deviceIp}/api/firmware/update",
+            "params": [
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Empty (default) for single slot, \"full\" for both slots"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "firmware",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a .raucb firmware bundle (max 256 MiB) for installation. Uses multipart/form-data. The mode query parameter is empty (default) for single slot or \"full\" for both slots. Installation runs asynchronously; poll GET /api/firmware/status for progress."
+        },
+        {
+          "info": {
+            "name": "Install firmware from a URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{deviceIp}/api/firmware/update/url"
+          },
+          "docs": "Install firmware from a URL"
+        },
+        {
+          "info": {
+            "name": "Resume a firmware update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{deviceIp}/api/firmware/update/resume"
+          },
+          "docs": "Resume a firmware update"
+        },
+        {
+          "info": {
+            "name": "Cancel a firmware update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{deviceIp}/api/firmware/update/cancel"
+          },
+          "docs": "Cancel a firmware update"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

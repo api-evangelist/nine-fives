@@ -1,53 +1,67 @@
 generated: '2026-07-20'
 method: searched
 source: https://ninefives.com/.well-known/ucp
-note: >-
-  Two distinct surfaces. (1) A PUBLISHED, hosted MCP server on the ninefives.com
-  storefront via Shopify's Universal Commerce Protocol (agent-driven shopping —
-  search_catalog, create_cart, create_checkout, etc.). (2) A DERIVED candidate
-  MCP for the device REST API (attenuator / SPDT switch), one tool per documented
+note: Two distinct surfaces. (1) A PUBLISHED, hosted MCP server on the ninefives.com storefront via Shopify's
+  Universal Commerce Protocol (agent-driven shopping — search_catalog, create_cart, create_checkout, etc.).
+  (2) A DERIVED candidate MCP for the device REST API (attenuator / SPDT switch), one tool per documented
   operationId — no first-party device MCP is published.
 servers:
-  - name: nine-fives-commerce
-    status: published
-    transport: mcp
-    url: https://ninefives.com/api/ucp/mcp
-    protocol: Universal Commerce Protocol (UCP)
-    versions: ['2026-04-08', '2026-01-23']
-    schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
-    description: Shopify-native UCP commerce MCP endpoint; tools/list to discover; checkout requires human approval.
-    example_tools: [search_catalog, create_cart, create_checkout, update_checkout, complete_checkout]
-  - name: nine-fives-attenuator
-    status: candidate
-    transport: http
-    description: Candidate MCP derived from the attenuator REST API; not published by the provider.
-    source_spec: openapi/nine-fives-attenuator-openapi.yml
-    tools:
-      - name: get_system_status
-        source_operation: openapi/nine-fives-attenuator-openapi.yml#getSystemStatus
-      - name: reboot_system
-        source_operation: openapi/nine-fives-attenuator-openapi.yml#rebootSystem
-      - name: get_network_config
-        source_operation: openapi/nine-fives-attenuator-openapi.yml#getNetworkConfig
-      - name: set_network_config
-        source_operation: openapi/nine-fives-attenuator-openapi.yml#setNetworkConfig
-      - name: get_firmware_status
-        source_operation: openapi/nine-fives-attenuator-openapi.yml#getFirmwareStatus
-      - name: get_attenuation
-        source_operation: openapi/nine-fives-attenuator-openapi.yml#getAttenuation
-      - name: set_attenuation
-        source_operation: openapi/nine-fives-attenuator-openapi.yml#setAttenuation
-      - name: get_startup_attenuation
-        source_operation: openapi/nine-fives-attenuator-openapi.yml#getStartupAttenuation
-      - name: set_startup_attenuation
-        source_operation: openapi/nine-fives-attenuator-openapi.yml#setStartupAttenuation
-  - name: nine-fives-switch
-    status: candidate
-    transport: http
-    description: Candidate MCP derived from the SPDT switch REST API; not published by the provider.
-    source_spec: openapi/nine-fives-switch-openapi.yml
-    tools:
-      - name: get_switch_state
-        source_operation: openapi/nine-fives-switch-openapi.yml#getSwitchState
-      - name: set_switch_state
-        source_operation: openapi/nine-fives-switch-openapi.yml#setSwitchState
+- name: nine-fives-commerce
+  status: published
+  transport: mcp
+  url: https://ninefives.com/api/ucp/mcp
+  protocol: Universal Commerce Protocol (UCP)
+  versions:
+  - '2026-04-08'
+  - '2026-01-23'
+  schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+  description: Shopify-native UCP commerce MCP endpoint; tools/list to discover; checkout requires human
+    approval.
+  example_tools:
+  - search_catalog
+  - create_cart
+  - create_checkout
+  - update_checkout
+  - complete_checkout
+- name: nine-fives-attenuator
+  status: candidate
+  transport: http
+  description: Candidate MCP derived from the attenuator REST API; not published by the provider.
+  source_spec: openapi/nine-fives-attenuator-openapi.yml
+  tools:
+  - name: get_system_status
+    source_operation: openapi/nine-fives-attenuator-openapi.yml#getSystemStatus
+  - name: reboot_system
+    source_operation: openapi/nine-fives-attenuator-openapi.yml#rebootSystem
+  - name: get_network_config
+    source_operation: openapi/nine-fives-attenuator-openapi.yml#getNetworkConfig
+  - name: set_network_config
+    source_operation: openapi/nine-fives-attenuator-openapi.yml#setNetworkConfig
+  - name: get_firmware_status
+    source_operation: openapi/nine-fives-attenuator-openapi.yml#getFirmwareStatus
+  - name: get_attenuation
+    source_operation: openapi/nine-fives-attenuator-openapi.yml#getAttenuation
+  - name: set_attenuation
+    source_operation: openapi/nine-fives-attenuator-openapi.yml#setAttenuation
+  - name: get_startup_attenuation
+    source_operation: openapi/nine-fives-attenuator-openapi.yml#getStartupAttenuation
+  - name: set_startup_attenuation
+    source_operation: openapi/nine-fives-attenuator-openapi.yml#setStartupAttenuation
+- name: nine-fives-switch
+  status: candidate
+  transport: http
+  description: Candidate MCP derived from the SPDT switch REST API; not published by the provider.
+  source_spec: openapi/nine-fives-switch-openapi.yml
+  tools:
+  - name: get_switch_state
+    source_operation: openapi/nine-fives-switch-openapi.yml#getSwitchState
+  - name: set_switch_state
+    source_operation: openapi/nine-fives-switch-openapi.yml#setSwitchState
+deployment:
+  mode: remote
+  endpoint: https://ninefives.com/api/ucp/mcp
+  verified: probed
+  probe: live
+  tools: 13
+  checked: '2026-08-12'
+  source: catalog MCP census
