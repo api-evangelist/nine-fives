@@ -14,6 +14,18 @@ description: >-
   platform adds version-controlled test-rack configuration and an LLM skill that
   turns a rack drawing into functional test-automation code.
 url: https://raw.githubusercontent.com/api-evangelist/nine-fives/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
