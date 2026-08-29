@@ -17,6 +17,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "nine-fives-attenuator-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nine-fives-firmware-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nine-fives-network-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nine-fives-switch-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nine-fives-system-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

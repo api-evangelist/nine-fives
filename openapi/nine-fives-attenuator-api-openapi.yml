@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Nine Fives Programmable REST Attenuator API
   version: '1.0'
@@ -96,17 +96,6 @@ paths:
           description: Failed to save startup setpoint
 components:
   schemas:
-    Attenuation:
-      type: object
-      required:
-      - setpoint
-      properties:
-        setpoint:
-          type: number
-          minimum: 0
-          maximum: 95.25
-          multipleOf: 0.25
-          description: Attenuation setpoint in dB (0 to 95.25 in steps of 0.25)
     StartupAttenuation:
       type: object
       required:
@@ -118,3 +107,14 @@ components:
           maximum: 95.25
           multipleOf: 0.25
           description: Startup attenuation setpoint in dB, persisted across boots
+    Attenuation:
+      type: object
+      required:
+      - setpoint
+      properties:
+        setpoint:
+          type: number
+          minimum: 0
+          maximum: 95.25
+          multipleOf: 0.25
+          description: Attenuation setpoint in dB (0 to 95.25 in steps of 0.25)

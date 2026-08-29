@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Nine Fives Programmable REST Attenuator Firmware API
   version: '1.0'
@@ -98,6 +98,13 @@ paths:
           description: Update cancelled
 components:
   schemas:
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
     FirmwareStatus:
       type: object
       properties:
@@ -136,11 +143,4 @@ components:
           - installing_second
           description: Current phase during a full update
         lastError:
-          type: string
-    StatusMessage:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
           type: string

@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Nine Fives Programmable REST Attenuator Network API
   version: '1.0'
@@ -62,22 +62,6 @@ paths:
           description: Network reset
 components:
   schemas:
-    DhcpServer:
-      type: object
-      properties:
-        range_start:
-          type: string
-        range_end:
-          type: string
-        lease_time:
-          type: string
-    NetworkConfig:
-      type: object
-      properties:
-        ethernet:
-          $ref: '#/components/schemas/EthernetConfig'
-        usb_gadget:
-          $ref: '#/components/schemas/UsbGadgetConfig'
     EthernetConfig:
       type: object
       properties:
@@ -104,6 +88,13 @@ components:
         mac:
           type: string
           readOnly: true
+    NetworkConfig:
+      type: object
+      properties:
+        ethernet:
+          $ref: '#/components/schemas/EthernetConfig'
+        usb_gadget:
+          $ref: '#/components/schemas/UsbGadgetConfig'
     UsbGadgetConfig:
       type: object
       properties:
@@ -128,3 +119,12 @@ components:
         mac:
           type: string
           readOnly: true
+    DhcpServer:
+      type: object
+      properties:
+        range_start:
+          type: string
+        range_end:
+          type: string
+        lease_time:
+          type: string
