@@ -107,6 +107,8 @@ apis:
   humanURL: https://docs.ninefives.com/attenuator/
   baseURL: http://192.168.0.95
   tags:
+  - Networks
+  tags_raw:
   - Network
   properties:
   - type: OpenAPI
