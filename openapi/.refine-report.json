@@ -1,29 +1,33 @@
 {
   "provider": "nine-fives",
   "sources": [
-    "nine-fives-attenuator-api-openapi.yml",
-    "nine-fives-firmware-api-openapi.yml",
-    "nine-fives-network-api-openapi.yml",
-    "nine-fives-switch-api-openapi.yml",
-    "nine-fives-system-api-openapi.yml"
+    "_ae-authored/nine-fives-attenuator-openapi.yml",
+    "_ae-authored/nine-fives-switch-openapi.yml"
   ],
   "outputs": [
     "nine-fives-attenuator-api-openapi.yml",
     "nine-fives-firmware-api-openapi.yml",
     "nine-fives-network-api-openapi.yml",
-    "nine-fives-switch-api-openapi.yml",
-    "nine-fives-system-api-openapi.yml"
+    "nine-fives-system-api-openapi.yml",
+    "nine-fives-switch-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
-    "nine-fives-attenuator-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "nine-fives-firmware-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "nine-fives-network-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "nine-fives-switch-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "nine-fives-system-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "nine-fives-attenuator-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nine-fives-switch-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "tag 'Firmware' spans 2 source specs (nine-fives-attenuator-openapi.yml, nine-fives-switch-openapi.yml): per-path servers applied",
+    "tag 'Network' spans 2 source specs (nine-fives-attenuator-openapi.yml, nine-fives-switch-openapi.yml): per-path servers applied",
+    "tag 'System' spans 2 source specs (nine-fives-attenuator-openapi.yml, nine-fives-switch-openapi.yml): per-path servers applied",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "nine-fives-attenuator-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nine-fives-firmware-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nine-fives-network-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nine-fives-switch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nine-fives-system-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

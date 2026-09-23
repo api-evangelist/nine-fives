@@ -1,14 +1,15 @@
 openapi: 3.2.0
 info:
-  title: Nine Fives Programmable REST Attenuator Network API
+  title: Nine Fives Network API
   version: '1.0'
-  description: JSON REST API served on port 80 by the Nine Fives POE-ATTEN-6G programmable RF attenuator for programmatic control and monitoring. Faithfully transcribed from the published device reference manual; the device also exposes SCPI over raw TCP (port 5025) and HiSLIP (port 4880). No authentication is required — the API is served directly by the device over the local network (Ethernet or USB-C).
   contact:
     name: Nine Fives
     url: https://ninefives.com
   x-generated: '2026-07-20'
   x-method: generated
-  x-source: https://docs.ninefives.com/attenuator/rest-api/overview/
+  x-refined-note:
+  - x-source differs across the merged source definitions and was not carried
+  description: 'Operations tagged Network across 2 of this provider''s published API definitions: nine-fives-attenuator-openapi.yml, nine-fives-switch-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: http://{deviceIp}
   description: Device-hosted API on port 80 (default Ethernet fallback IP 192.168.0.95, USB-C 192.168.42.95)
@@ -51,6 +52,13 @@ paths:
           description: Configuration applied
         '400':
           description: Bad Request — invalid input or parameters
+    servers:
+    - url: http://{deviceIp}
+      description: Device-hosted API on port 80 (default Ethernet fallback IP 192.168.0.95, USB-C 192.168.42.95)
+      variables:
+        deviceIp:
+          default: 192.168.0.95
+          description: The IP address of the attenuator device on the local network
   /api/network/reset:
     post:
       operationId: resetNetworkConfig
@@ -60,8 +68,46 @@ paths:
       responses:
         '200':
           description: Network reset
+    servers:
+    - url: http://{deviceIp}
+      description: Device-hosted API on port 80 (default Ethernet fallback IP 192.168.0.95, USB-C 192.168.42.95)
+      variables:
+        deviceIp:
+          default: 192.168.0.95
+          description: The IP address of the attenuator device on the local network
 components:
   schemas:
+    UsbGadgetConfig:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum:
+          - dhcp_host
+          - static
+          - disabled
+          description: dhcp_host is factory default
+        ip_address:
+          type: string
+        netmask:
+          type: string
+        enabled:
+          type: boolean
+        dhcp_server:
+          $ref: '#/components/schemas/DhcpServer'
+        live_ip:
+          type: string
+          readOnly: true
+        mac:
+          type: string
+          readOnly: true
+    NetworkConfig:
+      type: object
+      properties:
+        ethernet:
+          $ref: '#/components/schemas/EthernetConfig'
+        usb_gadget:
+          $ref: '#/components/schemas/UsbGadgetConfig'
     EthernetConfig:
       type: object
       properties:
@@ -88,37 +134,6 @@ components:
         mac:
           type: string
           readOnly: true
-    NetworkConfig:
-      type: object
-      properties:
-        ethernet:
-          $ref: '#/components/schemas/EthernetConfig'
-        usb_gadget:
-          $ref: '#/components/schemas/UsbGadgetConfig'
-    UsbGadgetConfig:
-      type: object
-      properties:
-        mode:
-          type: string
-          enum:
-          - dhcp_host
-          - static
-          - disabled
-          description: dhcp_host is factory default
-        ip_address:
-          type: string
-        netmask:
-          type: string
-        enabled:
-          type: boolean
-        dhcp_server:
-          $ref: '#/components/schemas/DhcpServer'
-        live_ip:
-          type: string
-          readOnly: true
-        mac:
-          type: string
-          readOnly: true
     DhcpServer:
       type: object
       properties:
@@ -128,3 +143,53 @@ components:
           type: string
         lease_time:
           type: string
+    NetworkConfig_2:
+      type: object
+      properties:
+        ethernet:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+              - dhcp_client_fallback
+              - static
+              - dhcp_client
+            ip_address:
+              type: string
+            netmask:
+              type: string
+            gateway:
+              type: string
+            dhcp_fallback_timeout:
+              type: integer
+            live_ip:
+              type: string
+              readOnly: true
+            mac:
+              type: string
+              readOnly: true
+        usb_gadget:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+              - dhcp_host
+              - static
+              - disabled
+            ip_address:
+              type: string
+            netmask:
+              type: string
+            enabled:
+              type: boolean
+            live_ip:
+              type: string
+              readOnly: true
+            mac:
+              type: string
+              readOnly: true
+x-refined-from:
+- nine-fives-attenuator-openapi.yml
+- nine-fives-switch-openapi.yml
