@@ -77,6 +77,15 @@ paths:
           description: The IP address of the attenuator device on the local network
 components:
   schemas:
+    DhcpServer:
+      type: object
+      properties:
+        range_start:
+          type: string
+        range_end:
+          type: string
+        lease_time:
+          type: string
     UsbGadgetConfig:
       type: object
       properties:
@@ -134,15 +143,6 @@ components:
         mac:
           type: string
           readOnly: true
-    DhcpServer:
-      type: object
-      properties:
-        range_start:
-          type: string
-        range_end:
-          type: string
-        lease_time:
-          type: string
     NetworkConfig_2:
       type: object
       properties:
