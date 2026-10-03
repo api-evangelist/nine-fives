@@ -77,15 +77,32 @@ paths:
           description: The IP address of the attenuator device on the local network
 components:
   schemas:
-    DhcpServer:
+    EthernetConfig:
       type: object
       properties:
-        range_start:
+        mode:
           type: string
-        range_end:
+          enum:
+          - dhcp_client_fallback
+          - static
+          - dhcp_client
+          description: dhcp_client_fallback is factory default
+        ip_address:
           type: string
-        lease_time:
+        netmask:
           type: string
+        gateway:
+          type: string
+        dhcp_fallback_timeout:
+          type: integer
+        dhcp_server:
+          $ref: '#/components/schemas/DhcpServer'
+        live_ip:
+          type: string
+          readOnly: true
+        mac:
+          type: string
+          readOnly: true
     UsbGadgetConfig:
       type: object
       properties:
@@ -117,32 +134,15 @@ components:
           $ref: '#/components/schemas/EthernetConfig'
         usb_gadget:
           $ref: '#/components/schemas/UsbGadgetConfig'
-    EthernetConfig:
+    DhcpServer:
       type: object
       properties:
-        mode:
+        range_start:
           type: string
-          enum:
-          - dhcp_client_fallback
-          - static
-          - dhcp_client
-          description: dhcp_client_fallback is factory default
-        ip_address:
+        range_end:
           type: string
-        netmask:
+        lease_time:
           type: string
-        gateway:
-          type: string
-        dhcp_fallback_timeout:
-          type: integer
-        dhcp_server:
-          $ref: '#/components/schemas/DhcpServer'
-        live_ip:
-          type: string
-          readOnly: true
-        mac:
-          type: string
-          readOnly: true
     NetworkConfig_2:
       type: object
       properties:
