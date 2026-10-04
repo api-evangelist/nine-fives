@@ -65,13 +65,6 @@ paths:
           description: The IP address of the attenuator device on the local network
 components:
   schemas:
-    StatusMessage:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
-          type: string
     SystemStatus:
       type: object
       properties:
@@ -96,6 +89,13 @@ components:
         connectedIface:
           type: string
           description: Network interface the client is connected through (eth0 or usb0)
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
     SystemStatus_2:
       type: object
       properties:
