@@ -134,6 +134,13 @@ paths:
           description: The IP address of the attenuator device on the local network
 components:
   schemas:
+    StatusMessage:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
     FirmwareStatus:
       type: object
       properties:
@@ -172,13 +179,6 @@ components:
           - installing_second
           description: Current phase during a full update
         lastError:
-          type: string
-    StatusMessage:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
           type: string
     FirmwareStatus_2:
       type: object
