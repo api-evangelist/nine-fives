@@ -64,6 +64,117 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Nine Fives is a company surfaced as a portfolio company of y-combinator and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Nine Fives builds modern, simple-to-use RF (radio frequency) test equipment for next-generation spacecraft, drones, and cellphones. Founded in 2025 by Andrew Kurtz and Noah Levy — RF hardware engineers who spent a decade at SpaceX designing radios and test systems for Falcon 9, Dragon, and Starship — the Y Combinator-backed company sells programmable, network-connected instruments: the POE-ATTEN-6G programmable attenuator and the POE-SWITCH-6G programmable SPDT switch, powered over USB-C or Power over Ethernet. Each instrument is automation-first: it serves a JSON REST API and a SCPI command interface (raw TCP and HiSLIP/IVI-6.1) directly on the device, plus a browser Web UI and touchscreen, with no drivers to install — control it with a plain curl command. The NineVue platform adds version-controlled test-rack configuration and an LLM skill that turns a rack drawing into functional test-automation code.
 
-Backed by: y-combinator
+**Areas:** Company · RF Test Equipment · Test and Measurement · Hardware · IoT · Instrumentation · Automation · Aerospace · Attenuator · RF Switch · SCPI
+
+## Nine Fives on APIs.io
+
+Everything profiled for Nine Fives is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nine-fives/](https://apis.io/providers/nine-fives/)** — or go straight to one of the APIs or properties below.
+
+### APIs (5)
+
+- [Nine Fives Attenuator API](https://apis.io/apis/nine-fives/nine-fives-attenuator-api/) — Attenuation setpoint control
+- [Nine Fives Firmware API](https://apis.io/apis/nine-fives/nine-fives-firmware-api/) — Firmware status and dual-slot (A/B) updates
+- [Nine Fives Network API](https://apis.io/apis/nine-fives/nine-fives-network-api/) — Ethernet and USB-C interface configuration
+- [Nine Fives Switch API](https://apis.io/apis/nine-fives/nine-fives-switch-api/) — SPDT switch state control
+- [Nine Fives System API](https://apis.io/apis/nine-fives/nine-fives-system-api/) — Device status and reboot
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [nine-fives-mcp.yml](https://apis.io/servers/nine-fives/nine-fives-mcp-yml/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Nine Fives Programmable REST Attenuator API](https://apis.io/collections/nine-fives/open-nine-fives-attenuator-api/)
+- [Nine Fives Programmable REST Attenuator Firmware API](https://apis.io/collections/nine-fives/open-nine-fives-firmware-api/)
+- [Nine Fives Programmable REST Attenuator Network API](https://apis.io/collections/nine-fives/open-nine-fives-network-api/)
+- [Nine Fives Programmable REST Attenuator Switch API](https://apis.io/collections/nine-fives/open-nine-fives-switch-api/)
+- [Nine Fives Programmable REST Attenuator System API](https://apis.io/collections/nine-fives/open-nine-fives-system-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Nine Fives Attenuator Overlay](https://apis.io/overlays/nine-fives/nine-fives-attenuator-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Nine Fives Authentication](https://apis.io/security/nine-fives/nine-fives-authentication/)
+- [Nine Fives Domain Security](https://apis.io/security/nine-fives/nine-fives-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://ninefives.com)
+- [Documentation](https://docs.ninefives.com/)
+- [Getting started](https://docs.ninefives.com/attenuator/getting-started/)
+- [API reference](https://docs.ninefives.com/attenuator/rest-api/overview/)
+- [Sign up](https://ninefives.com/account/login)
+- [Support](https://ninefives.com/pages/contact)
+- [Blog](https://blog.ninefives.com/)
+- [Privacy policy](https://ninefives.com/policies/privacy-policy)
+
+## API Evangelist rating
+
+**Kin Score 29.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 80.0 |
+| Contract quality | 11.5 |
+| Contract governance | 18.2 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 23.7 |
+
+**Agent readiness 30.1** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | platform (partial credit) |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nine-fives/](https://apis.io/providers/nine-fives/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Nine Fives: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nine-fives/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
